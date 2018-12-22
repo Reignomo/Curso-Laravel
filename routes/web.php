@@ -66,4 +66,6 @@ Route::get('primeiraview', function(){
     return view('minhaView');
 });
 
-Route::get('/produtos','produtoControlador@listar');
+Route::get('/produtos','produtoControlador@listar')->name('listarProdutos');
+
+Route::get('/sessaoprodutos/{palavra?}','produtoControlador@sessaoProdutos')->name('sessaoProdutos');

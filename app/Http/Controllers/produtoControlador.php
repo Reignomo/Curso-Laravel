@@ -22,4 +22,12 @@ class produtoControlador extends Controller
 
         return view('produtos', compact('produtos'));
     }
+
+    public function sessaoProdutos($palavra){
+        if(!isset($palavra))
+        {
+            return view('sessaoProdutos');
+        }
+        return view('sessaoProdutos', compact('palavra'));
+    }
 }
