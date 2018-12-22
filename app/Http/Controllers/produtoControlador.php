@@ -12,7 +12,13 @@ class produtoControlador extends Controller
         'Teclado',
         'Mouse',
         'Monitor',
-        'Impressora'];
+        'Impressora',
+        'TV',
+        'Microondas',
+        'Nootbok',
+        'MAC',
+        'Tablet'
+        ];
 
         return view('produtos', compact('produtos'));
     }
