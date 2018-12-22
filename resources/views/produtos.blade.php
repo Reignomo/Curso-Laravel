@@ -9,6 +9,10 @@
     margin-right:1%;
     margin-top:2%;
 }
+#qt-anuncios{
+    margin-top:1%;
+    text-align:right;
+}
 </style>
 @section('conteudo')
     @if(isset($produtos))
@@ -24,6 +28,7 @@
             </div>
         @endforeach
             </div>
+            <small><p id="qt-anuncios">Quantidade de anúncios: {{ count($produtos) }}</p></small>
         </div>
     @endif
 @endsection
