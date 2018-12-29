@@ -24,6 +24,10 @@
                     <h5 class="card-title" style="text-transform: uppercase;"><center>{{ $produto }}</center></h5>
                     <p class="card-text">Descrição do produto.</p>
                     <p class="card-text"><small class="text-muted">Data de criação da postagem</small></p>
+                    <span class="badge badge-secondary">{{ $loop->iteration }}/{{ $loop->count }}</span>
+                    @if ($loop->last)
+                        <a href="#"><center><small><p>Ver mais produtos</p></small></center></a>
+                    @endif
                 </div>
             </div>
         @endforeach
