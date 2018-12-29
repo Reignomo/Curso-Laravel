@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,3 +70,12 @@ Route::get('primeiraview', function(){
 Route::get('/produtos','produtoControlador@listar')->name('listarProdutos');
 
 Route::get('/sessaoprodutos/{palavra?}','produtoControlador@sessaoProdutos')->name('sessaoProdutos');
+
+Route::get('/categorias', function(){
+    $registros = DB::table('categorias')->get();
+    foreach($registros as $item)
+    {
+        echo "id: ".$item->id. " - ";
+        echo "nome: ".$item->nome."<br>"; 
+    }
+});
