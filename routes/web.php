@@ -73,9 +73,81 @@ Route::get('/sessaoprodutos/{palavra?}','produtoControlador@sessaoProdutos')->na
 
 Route::get('/categorias', function(){
     $registros = DB::table('categorias')->get();
-    foreach($registros as $item)
-    {
-        echo "id: ".$item->id. " - ";
-        echo "nome: ".$item->nome."<br>"; 
+    echo '<table>';
+    echo '<tr>';
+    echo '<th>id</th>';
+    echo '<th>Nome</th>';  
+    foreach($registros as $item){
+        echo '<tr>';
+        echo '<td>'.$item->id.'</td>';
+        echo '<td>'.$item->nome.'</td>'; 
+        echo '</tr>';
+    }
+    echo '</table>';
+});
+
+Route::get('/adcionar-produtos', function(){
+    
+    try {
+           $id[] =  DB::table('produtos')->insertGetId(
+                ['nome' => 'Bife', 'preço' => 15.00 , 'estoque' => 5, 'categoria_id' => 1]
+            );
+            $id[] =  DB::table('produtos')->insertGetId(
+                ['nome' => 'Fafinha', 'preço' => 15.00 , 'estoque' => 5, 'categoria_id' => 1]
+            );
+            $id[] =  DB::table('produtos')->insertGetId(
+                ['nome' => 'Fafinha2', 'preço' => 15.00 , 'estoque' => 5, 'categoria_id' => 1]
+            );
+            echo 'Produtos adicionados com sucesso';
+            for($i = 0; $i < count($id); $i++){
+                echo $id[$i].'<br>';
+            }
+        }
+        catch(Exception $e){
+            echo 'Exceção capturada: ',  $e->getMessage(), "\n";
+        }
+});
+
+Route::get('/lista-produtos', function(){
+    try{
+        $produtos = DB::table('produtos')->get();
+        foreach($produtos as $produto){
+            echo 'Nome: '.$produto->Nome.' - Preço: '.$produto->preço.'<br>';
+        }
+    }
+    catch(Exception $e){
+        echo 'Exceção capturada: ',  $e->getMessage(), "\n";
+    }
+});
+//
+Route::get('/update-produto/{id}/{nome}', function($id, $nome){
+    try{
+        $produto = DB::table('produtos')->where('id',$id)->first();
+        echo 'Nome antigo do produto :'.$produto->Nome.'<br>';
+        DB::table('produtos')->where('id',$id)->update(['Nome' => $nome]);
+        $produtoNovo = DB::table('produtos')->where('id',$id)->first();
+        echo 'Novo nome do produto: '.$produtoNovo->Nome;
+
+    }
+    catch(Exception $e){
+        echo 'Exceção capturada: '.$e->getMessage(),"\n";
+    }
+});
+Route::get('delete-produtos/{id}', function($id){
+    try{
+        $produtos = DB::table('produtos')->get();
+        foreach($produtos as $produto){
+            echo 'Nome: '.$produto->Nome.' - Preço: '.$produto->preço.'<br>';
+        }
+        echo '<hr>';
+        DB::table('produtos')->delete();
+        echo 'Produto apagado com sucesso';
+        $produtos = DB::table('produtos')->get();
+        foreach($produtos as $produto){
+            echo 'Nome: '.$produto->Nome.' - Preço: '.$produto->preço.'<br>';
+        }
+    } 
+    catch(Exception $e){
+        echo 'Exceção capturada: '.$e->getMessage(),"\n";
     }
 });

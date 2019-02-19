@@ -26,6 +26,9 @@ class CategoriasSeeder extends Seeder
                     
     DB::table('categorias')->insert([
         'nome'=>'Eletrônicos'
-        ]);                
+        ]);
+    DB::table('categorias')->insert([
+        'nome'=>'Cavalos marinhos'
+    ]);                
     }
 }
