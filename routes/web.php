@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/bemvindo/{nome}', function ($nome){
    return "<h1>Bem vindo $nome</h1>";
 });
@@ -61,7 +57,6 @@ Route::get('nomeId/{id?}', 'meuControlador@getNomeById');
 
 Route::get('idade', 'meuControlador@getIdade');
 
-Route::resource('/cliente', 'ClienteControlador');
 
 Route::get('primeiraview', function(){
     return view('minhaView');
@@ -201,4 +196,14 @@ Route::get('restauraCategoria/{id}', function($id){
     }
 });
 
+ // rotas projeto sistema de gerenciamento
+
+ Route::get('/', function(){
+    return view('index');
+ });
+
+ Route::get('/clientes','ControllerCliente@index');
+ Route::get('/departamentos', 'ControllerDepartamento@index');
  
+ Route::get('/cliente/novo', 'ControllerCliente@create');
+ Route::get('/departamento/novo', 'ControllerDepartamento@create');
