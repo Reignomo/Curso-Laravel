@@ -1,5 +1,5 @@
 <?php
-
+use App\Categoria;
 use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
@@ -151,3 +151,54 @@ Route::get('delete-produtos/{id}', function($id){
         echo 'Exceção capturada: '.$e->getMessage(),"\n";
     }
 });
+/// utilizando model
+Route::get('/inserir-categoria-model/{nome}', function($nome){
+   try{
+        $cat = new Categoria();
+        $cat->nome = $nome;
+        $cat->save();
+        echo 'Categoria adicionada com sucesso';
+     }
+        catch(Exception $e){
+            echo 'Exceção capturada: '.$e->getMessage(),"\n";
+        }
+});
+
+Route::get('lista-categorias', function(){
+    $categorias = Categoria::all();
+    foreach($categorias as $cat){
+        echo $cat->nome.'<br>';
+    }
+});
+Route::get('atualiza-categoria/{id}/{nome}', function($id, $nome){
+    $cat = Categoria::findOrFail($id);
+    $cat->nome = $nome;
+    $cat->save();
+    return redirect('/lista-categorias');
+    if(isset($cat)){
+        echo 'Nome antigo:'.$cat->nome.'<br>';
+        
+    }
+    else{
+        echo 'Categoria não encontrada';
+    }
+});
+Route::get('remover-categoria/{id}', function($id){
+    $cat = Categoria::findOrFail($id);
+    if(isset($cat)){
+        $cat->delete(); // ou forceDelete() para excluir permanentemente 
+        return redirect('/lista-categorias');
+    }
+    echo 'Categoria inexistente';
+});
+
+Route::get('restauraCategoria/{id}', function($id){
+
+    $cat = Categoria::withTrashed()->find($id);
+    if(isset($cat)){
+        $cat->restore();
+        echo 'Categoria restaurada com sucesso - '.$cat->nome;
+    }
+});
+
+ 
