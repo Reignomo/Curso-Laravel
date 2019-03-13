@@ -15,18 +15,22 @@ body{
     right: 0;
     bottom: 0;
     opacity: 0.6;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4));
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+    border-radius:1%;
+}
 
+.center{
+    margin:0px;
 }
 
 </style>
 @section('body')
     
-    <div class="card bg-transparent border" style="box-shadow: 2px 1px #E6E6E6;">
+    <div class="card bg-transparent border" style="box-shadow: 2px 2px #151515;">
     <div id="bg">
     </div>
         <div class="card-body">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-xs-12 col-md-6">
                     <form method="post" action="/dddddd">
                         <div class="form-group">
