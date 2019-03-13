@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Departamento;
 
 class ControllerDepartamento extends Controller
 {
@@ -13,7 +14,8 @@ class ControllerDepartamento extends Controller
      */
     public function index()
     {
-        return view('departamentos');
+        $departamentos = Departamento::all();
+        return view('departamentos', compact('departamentos'));
     }
 
     /**
@@ -34,7 +36,10 @@ class ControllerDepartamento extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $departamento = new Departamento();
+        $departamento->nome = $request->input('nomeDepartamento');
+        $departamento->save();
+        return view('departamentos');
     }
 
     /**

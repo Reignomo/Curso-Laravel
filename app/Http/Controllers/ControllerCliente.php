@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+Use App\Cliente;
 
 class ControllerCliente extends Controller
 {
@@ -34,7 +35,11 @@ class ControllerCliente extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = new Cliente();
+        $cliente->nome = $request->input('nomeCliente');
+        $cliente->idade = $request->input('idadeCliente');
+        $cliente->descricao = $request->input('descricaoCliente');
+        $cliente->save();
     }
 
     /**

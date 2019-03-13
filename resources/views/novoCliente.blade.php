@@ -19,34 +19,36 @@ body{
     border-radius:1%;
 }
 
-.center{
-    margin:0px;
+.shadow-text{
+    text-shadow: 2px 2px #D8D8D8;
 }
 
 
 </style>
 @section('body')
-    <div class="row justify-content-center">
+    <h1 class="text-secondary shadow-text text-center">Cadastro de clientes</h1>
+    <div class="d-flex justify-content-center">
         <div class="card bg-transparent border col-md-8 " id="mainCard" style="box-shadow: 2px 2px #151515;">
         <div id="bg">
         </div>
             <div class="card-body">
-                <div class="row justify-content-center">
+                <div class="justify-content-center">
                     <div class="col-xs-12 col-md-12">
-                        <form method="post" action="/dddddd">
+                        <form id="formCadastro" method="post" action="/cliente/cadastrar">
+                            @csrf
                             <div class="form-group">
                                 <label for="nmCliente" class="text-light">Nome</label>
-                                <input type="text" class="form-control" id="nmCliente" aria-describedby="nomehelp" placeholder="Digite o nome completo do cliente por favor">
+                                <input type="text" name="nomeCliente" class="form-control" id="nmCliente" aria-describedby="nomehelp" placeholder="Digite o nome completo do cliente por favor">
                             </div>
                             <div class="form-group">
                                 <label for="idadeCliente" class="text-light">Idade</label>
-                                <input type="text" class="form-control" id="idadeCliente" aria-describedby="idadeHelp" placeholder="Ex: 20">
+                                <input type="text" name="idadeCliente" class="form-control" id="idadeCliente" aria-describedby="idadeHelp" placeholder="Ex: 20">
                             </div>
                             <div class="form-group">
                                 <label for="descricaoCliente" class="text-light">Descrição</label>
-                                <textarea type="text" class="form-control" id="descricaoCliente" aria-describedby="descricaohelp" placeholder="Aqui você pode colocar um texto adicional sobre o cliente"></textarea>
+                                <textarea type="text" name="descricaoCliente" class="form-control" id="descricaoCliente" aria-describedby="descricaohelp" placeholder="Aqui você pode colocar um texto adicional sobre o cliente"></textarea>
                             </div>
-                            <input type="button" class="btn btn-secundary" value="cadastrar">
+                            <button class="btn btn-secundary" type="submit" form="formCadastro" value="Submit">Cadastrar</button>
                             </div>
                         </form>
                     </div>

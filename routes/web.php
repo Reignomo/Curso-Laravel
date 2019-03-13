@@ -207,3 +207,5 @@ Route::get('restauraCategoria/{id}', function($id){
  
  Route::get('/cliente/novo', 'ControllerCliente@create');
  Route::get('/departamento/novo', 'ControllerDepartamento@create');
+ Route::post('/cliente/cadastrar','ControllerCliente@store');
+ Route::post('/departamento/cadastrar', 'ControllerDepartamento@store');
