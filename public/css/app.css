@@ -60,7 +60,10 @@
 .bs-callout-info h4 {
   color: #5bc0de;
 }
-
+.full {
+  width:100%;
+  margin-bottom:5px;
+}
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;

@@ -209,3 +209,4 @@ Route::get('restauraCategoria/{id}', function($id){
  Route::get('/departamento/novo', 'ControllerDepartamento@create');
  Route::post('/cliente/cadastrar','ControllerCliente@store');
  Route::post('/departamento/cadastrar', 'ControllerDepartamento@store');
+ Route::get('/cliente/destroy/{id}', 'ControllerCliente@destroy');

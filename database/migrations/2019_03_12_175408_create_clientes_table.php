@@ -19,7 +19,7 @@ class CreateClientesTable extends Migration
             $table->integer('Idade');
             $table->integer('departamento_id')->unsigned();
             $table->foreign('departamento_id')->references('id')->on('departamentos');
-            $table->string('descricação');
+            $table->string('descricao');
             $table->timestamps();
         });
     }

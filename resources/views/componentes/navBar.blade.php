@@ -22,6 +22,9 @@
           <a class="dropdown-item" href="/departamento/novo">Cadastro</a>
         </div>
       </li>
+      <li @if($current =="about") class="nav-item active" @else class="nav-item" @endif>
+        <a class="nav-link" href="/about">about</a>
+      </li>
     </ul>
     <span class="navbar-text">
       IBico solutions 

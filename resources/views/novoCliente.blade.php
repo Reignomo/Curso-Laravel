@@ -45,6 +45,14 @@ body{
                                 <input type="text" name="idadeCliente" class="form-control" id="idadeCliente" aria-describedby="idadeHelp" placeholder="Ex: 20">
                             </div>
                             <div class="form-group">
+                                <select class="form-control" name="idDepartamento">
+                                    <option value="" disabled selected>Escolha um departamento</option>
+                                    @foreach($departamentos as $departamento)
+                                    <option value={{ $departamento->id }}> {{ $departamento->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="descricaoCliente" class="text-light">Descrição</label>
                                 <textarea type="text" name="descricaoCliente" class="form-control" id="descricaoCliente" aria-describedby="descricaohelp" placeholder="Aqui você pode colocar um texto adicional sobre o cliente"></textarea>
                             </div>
@@ -56,8 +64,5 @@ body{
             </div>
         </div>
     </div>
-
-    
-
 @endSection
 

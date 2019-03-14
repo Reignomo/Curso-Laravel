@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Cliente;
+Use App\Departamento;
 
 class ControllerCliente extends Controller
 {
@@ -14,7 +15,10 @@ class ControllerCliente extends Controller
      */
     public function index()
     {
-      return view('clientes');
+      $departamentos = Departamento::all();
+      $clientes = Cliente::all()->sortByDesc("id");
+      $lastCliente = Cliente::all()->sortByDesc("id")->first();
+      return view('clientes', compact('clientes','departamentos','lastCliente'));
     }
 
     /**
@@ -24,7 +28,8 @@ class ControllerCliente extends Controller
      */
     public function create()
     {
-        return view('novoCliente');
+        $departamentos = Departamento::all();
+        return view('novoCliente', compact('departamentos'));
     }
 
     /**
@@ -38,8 +43,10 @@ class ControllerCliente extends Controller
         $cliente = new Cliente();
         $cliente->nome = $request->input('nomeCliente');
         $cliente->idade = $request->input('idadeCliente');
+        $cliente->departamento_id = $request->input('idDepartamento');
         $cliente->descricao = $request->input('descricaoCliente');
         $cliente->save();
+        return redirect('/clientes');
     }
 
     /**
@@ -84,6 +91,7 @@ class ControllerCliente extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cliente::where('id',$id)->delete();
+        return redirect('/clientes');
     }
 }
