@@ -18,10 +18,10 @@
     <div class="bs-callout bs-callout-primary">
         <div class="card-body">
             <div class="row">
-                <div class="col-xs-12 col-md-3 centered">
+                <div class="col-12 col-md-4 centered">
                     <img alt="Responsive image" class="img-card-user mx-auto d-block"  src="/img/clientes/jademS.jpg">
                 </div>
-                <div class="col-xs-12 col-md-6 centered" style="padding-top:15px;">
+                <div class="col-12 col-md-6 centered" style="padding-top:15px;">
                     <h4 class="text-primary">{{ $lastCliente->Nome }}</h4>
                     <small class="text-dark">Desenvolvedor back-end</small>
                     <div class="text-secondary" style="margin-top:15px;">
@@ -37,7 +37,7 @@
                         <i style="margin-right:10px;" class="fab fa-instagram"></i>
                     </div>
                 </div>
-                <div class="col-xs-12 col-md-2" style="padding-top:15px; font-size:20px;">
+                <div class="col-12 col-md-2" style="padding-top:15px; font-size:20px;">
                     <span class="badge badge-primary full">Skills</span>
                     <span class="badge badge-secondary full">PHP 7 <i class="fab fa-php"></i></span>
                     <span class="badge badge-secondary full">Laravel 5.6 <i class="fab fa-laravel"></i></span>
