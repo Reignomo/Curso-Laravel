@@ -39,7 +39,8 @@ class ControllerDepartamento extends Controller
         $departamento = new Departamento();
         $departamento->nome = $request->input('nomeDepartamento');
         $departamento->save();
-        return view('departamentos');
+        $departamentos = Departamento::all();
+        return view('departamentos', compact('departamentos'));
     }
 
     /**
