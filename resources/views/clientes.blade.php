@@ -22,13 +22,13 @@
                     <img alt="Responsive image" class="img-card-user mx-auto d-block"  src="/img/clientes/jademS.jpg">
                 </div>
                 <div class="col-12 col-md-6 centered" style="padding-top:15px;">
-                    <h4 class="text-primary">{{ $lastCliente->Nome }}</h4>
+                    <h4 class="text-primary">{{ $lastCliente['Nome'] }}</h4>
                     <small class="text-dark">Desenvolvedor back-end</small>
                     <div class="text-secondary" style="margin-top:15px;">
                         <ul style="list-style-type: none; padding-left:0px;">
-                            <li><b>Idade: </b>{{ $lastCliente->Idade }}</li>
-                            <li><b>Departamento:</b>@php $departamento = $departamentos->find($lastCliente->departamento_id) @endphp {{ $departamento->nome }}</li>
-                            <li><b>Descriação:</b> {{ $lastCliente->descricao }}</li>
+                            <li><b>Idade: </b>{{ $lastCliente['idade'] }}</li>
+                            <li><b>Departamento:</b>@php $departamento = $departamentos->find($lastCliente['departamento_id']) @endphp {{ $departamento['nome'] }}</li>
+                            <li><b>Descriação:</b> {{ $lastCliente['descricao'] }}</li>
                         </ul>
                     </div>
                     <div class="row" style="font-size:24px; padding-left:15px;">
@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    <p class="text-right text-secondary"> Data de cadastro: {{ date('d/m/y', strtotime($lastCliente->created_at)) }} </p>
+    <p class="text-right text-secondary"> Data de cadastro: {{ date('d/m/y', strtotime($lastCliente['created_at'])) }} </p>
     <h2>Clientes</h2>
     <div class="card border">
         <div class="card-body">
