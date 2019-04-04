@@ -7,6 +7,9 @@
     }
 </style>
 @section('body')
+<script>
+    var departamentoSelecionado = 0;
+</script>
     <div class="card border" style="height:700px;">
         <div class="row" id="main-row">
             <div class="col-xs-12 col-md-4">
@@ -20,7 +23,7 @@
                 <div class="card border" style="height:450px;">
                     <div class="card-body">
                         <h2 class="card-title">Atualizar departamento</h2>
-                        <form action="/departamento/update" method="POST">
+                        <form action="/departamento/update/" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label form="nomeDepartamento">Nome departamento</label>
@@ -58,6 +61,7 @@ $("#checkdEditar").click(function(){
 
 $(".list-group-item").click(function(){
     $("#nomeDepartamento").val($(this).text());
+    var departamentoSelecionado = document.queryselector(this.id); 
 });
 </script>
 @endSection
